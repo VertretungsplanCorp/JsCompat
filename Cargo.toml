@@ -1,0 +1,17 @@
+[package]
+name = "vpclient"
+version = "0.0.1"
+authors = ["sert"]
+description = "Vertretungsplan Software Client"
+repository = "https://github.com/VertretungsplanCorp/Client"
+readme = "README.md"
+edition = "2024"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+js-sys = { version = "0.3" }
+wasm-bindgen = { version = "0.2" }
+wasm-bindgen-futures = { version = "0.4" }
+web-sys = { version = "0.3", features = ['Headers', 'Request', 'RequestInit', 'RequestMode', 'Response', 'Window', 'ReadableStream'] }
