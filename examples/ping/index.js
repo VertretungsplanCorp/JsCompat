@@ -9,7 +9,7 @@ document.body.append(input);
 document.body.append(button);
 
 button.addEventListener("click", (_) => {
-  let server = new Server(input.value);
+  let server = new Server(input.value); // http://vpapi.josewa.com/
   console.log(server.ping);
   server.ping.then((msg) => {
     console.log(msg);

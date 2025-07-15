@@ -15,3 +15,4 @@ js-sys = { version = "0.3" }
 wasm-bindgen = { version = "0.2" }
 wasm-bindgen-futures = { version = "0.4" }
 web-sys = { version = "0.3", features = ['Headers', 'Request', 'RequestInit', 'RequestMode', 'Response', 'Window', 'ReadableStream'] }
+regex = { version = "1.11" }

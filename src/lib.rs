@@ -1,4 +1,5 @@
 use js_sys::JsString;
+use regex::Regex;
 use wasm_bindgen::prelude::*;
 use wasm_bindgen_futures::*;
 use web_sys::{Request, RequestInit, RequestMode, Response};
@@ -12,9 +13,9 @@ pub struct Server {
 impl Server {
     #[wasm_bindgen(constructor)]
     pub fn new(url: &str) -> Self {
-        Self {
-            url: url.to_owned(),
-        }
+        let re = Regex::new(r"^(https?://[^/]+)").unwrap();
+        let clean_url = re.captures(url).map(|caps| caps[1].to_string()).unwrap();
+        Self { url: clean_url }
     }
     pub async fn get(&self, path: &str) -> Result<Response, JsValue> {
         let url = format!("{}{}", self.url, path);
@@ -35,7 +36,7 @@ impl Server {
         let promise: JsFuture = response.text().expect("no text").into();
         promise.await.unwrap().into()
     }
-    #[wasm_bindgen(getter)]
+    #[wasm_bindgen]
     pub async fn getKlasse(&self, klasse: &str) -> JsString {
         let response: Response = self
             .get(&format!("/get_klasse?klasse={klasse}"))
