@@ -35,4 +35,13 @@ impl Server {
         let promise: JsFuture = response.text().expect("no text").into();
         promise.await.unwrap().into()
     }
+    #[wasm_bindgen(getter)]
+    pub async fn getKlasse(&self, klasse: &str) -> JsString {
+        let response: Response = self
+            .get(&format!("/get_klasse?klasse={klasse}"))
+            .await
+            .unwrap();
+        let promise: JsFuture = response.json().expect("no json").into();
+        promise.await.unwrap().into()
+    }
 }
