@@ -12,9 +12,9 @@
         <td style="width: 20%">{vertretung.lehrer}</td>
         <td style="width: 50%">{vertretung.raum}</td>
     </tr>
-    {#if (vertretung.info !== "")}
+    {#if (vertretung.text !== "")}
         <tr class="info">
-            <td colspan="4">{vertretung.info}</td>
+            <td colspan="4">{vertretung.text}</td>
         </tr>
     {/if}
     </tbody>
@@ -35,6 +35,7 @@
         border-style: solid;
         border-bottom: none;
         border-top: none;
+        padding: 0.3rem;
     }
 
     table {

@@ -5,7 +5,7 @@
     export let color;
 </script>
 
-<table style="width: 100%;">
+<table>
     <tbody style="width: 100%;">
     {#each vertretungen as vertretung}
       <tr style="width: 100%;">
@@ -14,3 +14,10 @@
     {/each}
     </tbody>
 </table>
+
+<style>
+  table {
+      margin: 0.5rem;
+      flex-grow: 1;
+  }
+</style>

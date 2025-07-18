@@ -56,23 +56,6 @@
         padding: 0.2rem;
     }
 
-    .datum {
-        margin-top: -0.2rem;
-        margin-right: -0.2rem;
-        position: relative;
-        float: right;
-        width: max-content;
-        color: black;
-        font-size: 0.8rem;
-        border-width: 0.15rem;
-        border-color: black;
-        border-style: solid;
-        border-bottom-left-radius: 0.5rem;
-        border-top: none;
-        border-right: none;
-        padding: 0.15rem;
-    }
-
     .klasse {
         position: relative;
         left: -1.5rem;
