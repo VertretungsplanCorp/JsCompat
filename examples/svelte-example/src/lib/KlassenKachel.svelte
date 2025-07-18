@@ -1,4 +1,6 @@
 <script>
+  import Datum from "./Datum.svelte";
+
   export let klasse;
   export let dati;
 
@@ -17,21 +19,21 @@
   }
 
   let color = getRandomVibrantColor();
-  import VertretungsTabelle from "./VertretungsTabelle.svelte";
+
   document.documentElement.style.setProperty('--color', color);
 </script>
 
-<div class="klassenKachel">
+<div class="KlassenKachel">
     <div class="klasse">{klasse}</div>
     <div class="kachelContent">
       {#each dati as datum}
-          <Datum datum="{datum}" color="{color}"/>
+          <Datum datum={datum} color={color} />
       {/each}
     </div>
 </div>
 
 <style>
-    .klassenKachel {
+    .KlassenKachel {
         width: 25vw;
     }
 

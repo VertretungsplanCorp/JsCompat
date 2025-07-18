@@ -4,6 +4,8 @@ use wasm_bindgen::prelude::*;
 use wasm_bindgen_futures::*;
 use web_sys::{Request, RequestInit, RequestMode, Response};
 
+// pub use vp_api::*;
+
 #[wasm_bindgen]
 pub struct Server {
     url: String,

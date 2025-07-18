@@ -1,5 +1,5 @@
 [package]
-name = "vpclient"
+name = "vp-client"
 version = "0.0.1"
 authors = ["sert"]
 description = "Vertretungsplan Software Client"
@@ -16,3 +16,4 @@ wasm-bindgen = { version = "0.2" }
 wasm-bindgen-futures = { version = "0.4" }
 web-sys = { version = "0.3", features = ['Headers', 'Request', 'RequestInit', 'RequestMode', 'Response', 'Window', 'ReadableStream'] }
 regex = { version = "1.11" }
+# vp-api = { version = "0.0.1", git = "https://github.com/VertretungsplanCorp/Api.git", features = ["wasm"] }

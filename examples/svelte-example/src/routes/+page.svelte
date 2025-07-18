@@ -1,14 +1,16 @@
 <script lang="ts">
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcomeFallback from '$lib/images/svelte-welcome.png';
+  import { Server } from "../../../../Cargo.toml"; // stattdessen git submodules benutzen
+  import KlassenKachel from "$lib/KlassenKachel.svelte";
 
-  import { Server } from "../../../../Cargo.toml"; // in real world scenarios use your git submodule
+  let dati: Array<Object> = $state(new Array);
 
   let url = $state('http://vpapi.josewa.com');
+  let klasse = $state('12e');
   function getData() {
     let server = new Server(url); 
-    server.getKlasse("10c").then((vertretungen) => {
-      console.log("Vertretungen: ", vertretungen);
+    server.getKlasse("10c").then((req_dati: Object) => {
+      console.log("Vertretungen: ", req_dati);
+      dati = req_dati.dati;
     });
   }
   
@@ -20,26 +22,33 @@
 </svelte:head>
 
 <section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcomeFallback} alt="Welcome" />
-			</picture>
-		</span>
-
-
-		to your new<br />vp_js_compat example</h1>
+	<h1><strong>Hallo beim Beispiel der des Vp_Js_Compat</strong></h1>
 
 	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
+		zu sehen in <strong>src/routes/+page.svelte</strong>
 	</h2>
+  <br>
+  <h2>
+    Abfrage:
+  </h2>
+  <form>
+    <label >
+      server url:
+      <input type="url" bind:value={url}/>
+    </label>
+    <br>
+    <label>
+      klasse:
+      <input type="text" bind:value={klasse}/>
+    </label>
+    <br>
+    <button onclick={() => {getData()}}>abrufen</button>
+  </form>
 
-  <input type="url" bind:value={url}/>
-  <button onclick={() => {getData()}}>get data</button>
-
-  
-
+  <h2>Kachel Klasse {klasse}:</h2>
+  {#if dati.length > 0}
+    <KlassenKachel klasse={klasse} dati={dati} />
+  {/if}
 </section>
 
 <style>
@@ -53,21 +62,5 @@
 
 	h1 {
 		width: 100%;
-	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
 	}
 </style>

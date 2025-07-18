@@ -1,5 +1,5 @@
 <script>
-    export let data;
+    export let vertretung;
     export let color;
     document.documentElement.style.setProperty('--color', color);
 </script>
@@ -7,14 +7,14 @@
 <table style="width: 100%;">
     <tbody style="width: 100%;">
     <tr style="width: 100%;">
-        <td style="width: 10%">{data.stunde}</td>
-        <td style="width: 20%">{data.fach}</td>
-        <td style="width: 20%">{data.lehrkraft}</td>
-        <td style="width: 50%">{data.raum}</td>
+        <td style="width: 10%">{vertretung.stunde}</td>
+        <td style="width: 20%">{vertretung.fach}</td>
+        <td style="width: 20%">{vertretung.lehrer}</td>
+        <td style="width: 50%">{vertretung.raum}</td>
     </tr>
-    {#if (data.info !== "")}
+    {#if (vertretung.info !== "")}
         <tr class="info">
-            <td colspan="4">{data.info}</td>
+            <td colspan="4">{vertretung.info}</td>
         </tr>
     {/if}
     </tbody>

@@ -1,4 +1,6 @@
 <script>
+  import VertretungsTabelle from "./VertretungsTabelle.svelte"
+
   export let datum;
   export let color;
 </script>
@@ -8,5 +10,5 @@
         {datum.datum}
     </div>
     <br/>
-    <VertretungsTabelle vertretungen="{datum.vertretungen}" color="{color}"/>
+    <VertretungsTabelle vertretungen={datum.vertretungen} color={color}/>
 </div>
